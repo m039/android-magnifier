@@ -62,7 +62,7 @@ public class AuthActivity extends BaseActivity {
         switch (id) {
         case R.id.login:
             if (getFacebook().isSessionValid()) {
-                Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show();
+                startUserActivity();
             } else {
                 authorize();
             }
@@ -77,7 +77,8 @@ public class AuthActivity extends BaseActivity {
         final Facebook facebook =  getFacebook();
         
         if(!facebook.isSessionValid()) {
-            facebook.authorize(this, new String[] {}, new DialogListener() {
+            facebook.authorize(this, new String[] { "read_mailbox" }, Facebook.FORCE_DIALOG_AUTH,
+                               new DialogListener() {
                     @Override
                     public void onComplete(Bundle values) {
                         SharedPreferences.Editor editor = getPrefs().edit();
@@ -114,7 +115,12 @@ public class AuthActivity extends BaseActivity {
                     @Override
                     public void onComplete(String response, Object state) {
                         deinitFacebook();
-                        Toast.makeText(AuthActivity.this, R.string.auth_logout_complete, Toast.LENGTH_SHORT).show();
+                        runOnUiThread(new Runnable() {
+                                public void run() {
+                                    Toast.makeText(AuthActivity.this,
+                                                   R.string.auth_logout_complete, Toast.LENGTH_SHORT).show();
+                                }
+                            });
                     }
   
                     @Override
@@ -132,5 +138,6 @@ public class AuthActivity extends BaseActivity {
         } 
     }
 
+    
 } // AuthActivity
 

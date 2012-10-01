@@ -22,10 +22,13 @@
 
 package com.m039.magnifier;
 
+import com.m039.magnifier.data.GlobalData;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import com.facebook.android.Facebook;
 import android.os.Bundle;
+import android.content.Intent;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 
@@ -38,10 +41,18 @@ import android.os.Bundle;
  */
 public class BaseActivity extends Activity {
 
+    public static final String TAG = "m039";
+    
     static Facebook mFacebook = new Facebook("293215484124892");
+
+    static ObjectMapper mMapper = new ObjectMapper();
 
     public Facebook getFacebook() {
         return mFacebook;
+    }
+
+    public ObjectMapper getMapper() {
+        return mMapper;
     }
 
     SharedPreferences mPrefs;
@@ -50,16 +61,21 @@ public class BaseActivity extends Activity {
         return mPrefs;
     }
 
+    public GlobalData getGlobalData() {
+        return GlobalData.getInstance();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mPrefs = getPreferences(MODE_PRIVATE);
+        
         initFacebook();
     }
     
     void initFacebook() {
         if(!mFacebook.isSessionValid()) {
-            mPrefs = getPreferences(MODE_PRIVATE);
             String access_token = mPrefs.getString("access_token", null);
             long expires = mPrefs.getLong("access_expires", 0);
             if(access_token != null) {
@@ -83,6 +99,19 @@ public class BaseActivity extends Activity {
         editor.putString("access_token", at);
         editor.putLong("access_expires", expires);
         editor.commit();
-    }    
+    }
+
+        
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        mFacebook.authorizeCallback(requestCode, resultCode, data);
+    }
+
+    void startUserActivity() {
+        Intent intent = new Intent(this, UserActivity.class);
+        startActivity(intent);
+    }
     
 } // BaseActivity

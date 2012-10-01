@@ -4,10 +4,45 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="Hello World, MagnifierActivity"
-    />
-</LinearLayout>
 
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="0"
+      android:gravity="center"
+      android:text="@string/user_title"
+      />
+
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"     
+      >
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <TextView
+        android:id="@+id/no_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/user_no_message"
+        android:visibility="invisible"
+        >
+    </TextView>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        style="@android:style/Widget.ProgressBar.Large"
+        />
+
+  </FrameLayout>
+
+</LinearLayout>

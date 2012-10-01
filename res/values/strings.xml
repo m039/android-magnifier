@@ -3,7 +3,16 @@
     <string name="app_name">MagnifierActivity</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
+
+    <!-- auth activity -->
+    
     <string name="auth_already_auth">You are already authorized! Didn\'t work..</string>
     <string name="auth_not_already_auth">You are not authorized user! Sorry.. :(</string>
-    <string name="auth_logout_complete">The logout complete</string>    
+    <string name="auth_logout_complete">The logout complete</string>
+
+    <!-- user activity -->
+    <string name="user_title">Your open conversations</string>
+    <string name="user_no_message">Your have not any open conversation! Sorry.. :(</string>
+
+    <string name="user_error">Something happend!</string>         
 </resources>
