@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     >
 
-  <View
+  <com.m039.magnifier.widget.Magnifier
       android:id="@+id/magnifier"
       android:layout_width="match_parent"
       android:layout_height="40dp"
-      android:background="#0F0"
+      android:background="#FFF"
       />
 
   <EditText

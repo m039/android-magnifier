@@ -32,6 +32,9 @@ import android.text.Editable;
 import android.widget.Toast;
 import android.widget.EditText;
 import android.widget.ArrayAdapter;
+import com.m039.magnifier.data.GlobalData;
+import android.view.View;
+import android.widget.AbsListView;
 
 /**
  * 
@@ -46,6 +49,7 @@ public class MessageActivity extends BaseActivity {
 
     ListView mList;
     EditText mEdit;
+    View mMagnifier;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,17 +57,38 @@ public class MessageActivity extends BaseActivity {
         setContentView(R.layout.message);
 
         int index = getIntent().getExtras().getInt("message-index");
+
+        List<CommentsData> comments = getCommentsData(index);
+
+        mMagnifier = findViewById(R.id.magnifier);      
         
         mList = (ListView) findViewById(R.id.list);
-        mList.setAdapter(new MessageAdapter(this, getCommentsData(index)));
+        mList.setAdapter(new MessageAdapter(this, comments));
+        mList.setOnScrollListener(mOnScrollListener);
 
         mEdit = (EditText) findViewById(R.id.edit);
         mEdit.addTextChangedListener(mTextWatcher);
+        mEdit.setText(getGlobalData().mTextToSearch);
+
+        GlobalData.getInstance().mComments = comments;
+        getGlobalData().mFirstVisibleItem = 0;
     }
 
     List<CommentsData> getCommentsData(int index) {
         return getGlobalData().getInbox().data.get(index).comments.data;
     }
+
+    AbsListView.OnScrollListener mOnScrollListener = new AbsListView.OnScrollListener () {
+            public void onScroll(AbsListView view,
+                                 int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+                getGlobalData().mFirstVisibleItem = firstVisibleItem;
+                mMagnifier.invalidate();
+            }
+            
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+        };
 
     TextWatcher mTextWatcher = new TextWatcher() {
             public void     afterTextChanged(Editable s) {}
@@ -71,6 +96,7 @@ public class MessageActivity extends BaseActivity {
             public void     onTextChanged(CharSequence s, int start, int before, int count) {
                 getGlobalData().mTextToSearch = String.valueOf(s);
                 ((ArrayAdapter) mList.getAdapter()).notifyDataSetChanged();
+                mMagnifier.invalidate();
             }
         };
 

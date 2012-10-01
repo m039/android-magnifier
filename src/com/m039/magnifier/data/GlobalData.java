@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import com.m039.magnifier.objs.InboxRequest.Inbox;
+import com.m039.magnifier.objs.InboxRequest.Inbox.InboxData.Comments.CommentsData;
 
 /**
  * 
@@ -63,6 +64,11 @@ public class GlobalData {
         mUserImage.put(id, image);
     }
 
+    // hacks
+    
     public String mTextToSearch = "";
+    public List<CommentsData> mComments = null;
+    public int mFirstVisibleItem = 0;
+    
     
 } // GlobalData

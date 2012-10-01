@@ -34,6 +34,10 @@ import com.m039.magnifier.R;
 import android.widget.TextView;
 import android.widget.ImageView;
 import com.m039.magnifier.data.GlobalData;
+import android.text.Spannable;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
 
 /**
  *
@@ -84,9 +88,7 @@ public class MessageAdapter extends ArrayAdapter<CommentsData> {
             root = you;
         }
 
-        String message = getMessage(comment);
-
-        ((TextView) root.findViewById(R.id.message)).setText(message);
+        ((TextView) root.findViewById(R.id.message)).setText(getMessage(comment));
 
         if (userImage != null) {
             ((ImageView) root.findViewById(R.id.upic)).setImageBitmap(userImage);
@@ -95,11 +97,20 @@ public class MessageAdapter extends ArrayAdapter<CommentsData> {
         return v;
     }
 
-    String getMessage(CommentsData comment) {
-        return comment.message;
+
+    Spanned getMessage(CommentsData comment) {
+        String textToSearch = GlobalData.getInstance().mTextToSearch;
+        String message = comment.message;
+
+        if (textToSearch == null || textToSearch.isEmpty()) {
+            return new SpannableString(message);
+        } else {
+            return Html.fromHtml(message.replaceAll(textToSearch,
+                                                    "<font color=\"#00FF00\">" + textToSearch + "</font>"));
+        }
     }
 
-    Bitmap getUserImage(CommentsData comment) {
+    static public Bitmap getUserImage(CommentsData comment) {
         return GlobalData.getInstance().getUserImage(comment.from.id);
     }
 
