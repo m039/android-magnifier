@@ -13,6 +13,8 @@
     <!-- user activity -->
     <string name="user_title">Your open conversations</string>
     <string name="user_no_message">Your have not any open conversation! Sorry.. :(</string>
+    <string name="user_error">Something happend!</string>
 
-    <string name="user_error">Something happend!</string>         
+    <!-- message activity -->
+    <string name="message_edit_hint">Type to search</string>         
 </resources>

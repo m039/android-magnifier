@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >  
+
+
+  <!-- you -->
+  
+  <RelativeLayout
+      android:id="@+id/you"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="invisible"
+      >
+
+    <ImageView
+        android:id="@+id/upic"
+        android:layout_width="@dimen/upic_width"
+        android:layout_height="@dimen/upic_height"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/upic"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:gravity="left"
+        />
+    
+  </RelativeLayout>
+
+  <!-- me -->
+
+  <RelativeLayout
+      android:id="@+id/me"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="invisible"
+      >
+
+    <ImageView
+        android:id="@+id/upic"
+        android:layout_alignParentRight="true"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/upic"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="50dp"
+        android:layout_gravity="right"
+        />
+    
+  </RelativeLayout>
+
+</FrameLayout>

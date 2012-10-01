@@ -113,5 +113,12 @@ public class BaseActivity extends Activity {
         Intent intent = new Intent(this, UserActivity.class);
         startActivity(intent);
     }
+
+    void startMessageActivity(int index) {
+        Intent intent = new Intent(this, MessageActivity.class);
+        intent.putExtra("message-index", index);
+        
+        startActivity(intent);
+    }
     
 } // BaseActivity

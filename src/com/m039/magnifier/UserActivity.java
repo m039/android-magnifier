@@ -38,6 +38,7 @@ import java.io.InputStream;
 import com.m039.magnifier.data.GlobalData;
 import com.m039.magnifier.objs.InboxRequest.Inbox.InboxData;
 import android.graphics.BitmapFactory;
+import android.widget.AdapterView;
 
 /**
  *
@@ -59,7 +60,9 @@ public class UserActivity extends BaseActivity {
         setContentView(R.layout.user);
 
         mProgress = findViewById(R.id.progress);
+
         mList = (ListView) findViewById(R.id.list);
+        mList.setOnItemClickListener(mOnItemClickListener);
 
         Bundle args = new Bundle();
 
@@ -142,5 +145,11 @@ public class UserActivity extends BaseActivity {
                 }
             });
     }
+
+    AdapterView.OnItemClickListener mOnItemClickListener = new AdapterView.OnItemClickListener() {
+            public void onItemClick (AdapterView<?> parent, View view, int position, long id) {
+                startMessageActivity(position);
+            }
+        };
 
 } // UsersActivity

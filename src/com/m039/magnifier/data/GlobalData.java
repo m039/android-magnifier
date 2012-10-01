@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import com.m039.magnifier.objs.InboxRequest.Inbox;
 
 /**
  * 
@@ -48,6 +49,10 @@ public class GlobalData {
 
     public InboxRequest mInboxRequest = null;
 
+    public Inbox getInbox() {
+        return mInboxRequest.inbox;
+    }
+    
     public Map<String, Bitmap> mUserImage = new HashMap<String, Bitmap>();
 
     public Bitmap getUserImage(String id) {
@@ -57,5 +62,7 @@ public class GlobalData {
     public void putUserImage(String id, Bitmap image) {
         mUserImage.put(id, image);
     }
+
+    public String mTextToSearch = "";
     
 } // GlobalData

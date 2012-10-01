@@ -25,6 +25,7 @@
 
     <activity android:name="MessageActivity"
               android:configChanges="orientation|keyboardHidden"
+              android:windowSoftInputMode="stateHidden"
               >
       <intent-filter>
         <category android:name="android.intent.category.LAUNCHER" />
