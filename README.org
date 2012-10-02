@@ -1,0 +1,37 @@
+* About
+  This project was created at World Hack Moscow 2012 for 6-7 hours.
+
+  The first idea was to make somethink similar to facebook timeline,
+  but this demo is far from that.
+
+  I didn't find the search functionality at the facebook mobile
+  applications and btw in the other mobile apps either and I asked
+  mysile how it could be.. the search for mobile apps.
+
+  It is easy if you try it.
+
+  But I try to explain what it does.
+
+* What it does
+
+  As it is hackathon I should use the facebook api, so that is why
+  then you open this application you should login in your facebook
+  account.
+
+  I use facebook chat message as the source of the text and I think it
+  is fun to analyze it. So, after you login, the next step is to
+  choose a open conversation. Once you choose the conversation, you at
+  last find the magnifier (the top element) and the field to type the
+  text to search (the bottom element).
+
+  The magnifier or the top element I think is the easiest way to show
+  you where you are (grey rectangle) in the conversation and it is
+  interesting place to show some information like mine (green lines)
+  or not messages (red lines) and the result of the search (cyan
+  lines).
+
+* Uses
+  This application uses and another example of usage:
+
+  - Facebook Android SDK
+  - jackson library
