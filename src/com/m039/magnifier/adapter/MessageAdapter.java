@@ -38,6 +38,7 @@ import android.text.Spannable;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.Spanned;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -97,15 +98,20 @@ public class MessageAdapter extends ArrayAdapter<CommentsData> {
         return v;
     }
 
+    String mTextToSearch = "";
 
+    public void setTextToSearch(String text) {
+        mTextToSearch = text;
+    }
+    
     Spanned getMessage(CommentsData comment) {
-        String textToSearch = GlobalData.getInstance().mTextToSearch;
+        String textToSearch = mTextToSearch;
         String message = comment.message;
 
         if (textToSearch == null || textToSearch.isEmpty()) {
             return new SpannableString(message);
         } else {
-            return Html.fromHtml(message.replaceAll(textToSearch,
+            return Html.fromHtml(message.replaceAll(Pattern.quote(textToSearch),
                                                     "<font color=\"#00FF00\">" + textToSearch + "</font>"));
         }
     }

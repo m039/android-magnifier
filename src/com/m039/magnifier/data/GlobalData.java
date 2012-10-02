@@ -63,12 +63,5 @@ public class GlobalData {
     public void putUserImage(String id, Bitmap image) {
         mUserImage.put(id, image);
     }
-
-    // hacks
-    
-    public String mTextToSearch = "";
-    public List<CommentsData> mComments = null;
-    public int mFirstVisibleItem = 0;
-    
     
 } // GlobalData
