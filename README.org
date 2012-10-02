@@ -15,7 +15,7 @@
 * What it does
 
   As it is hackathon I should use the facebook api, so that is why
-  then you open this application you should login in your facebook
+  when you open this application you should login in your facebook
   account.
 
   I use facebook chat message as the source of the text and I think it
