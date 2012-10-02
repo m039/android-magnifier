@@ -1,7 +1,7 @@
 * About
   This project was created at World Hack Moscow 2012 for 6-7 hours.
 
-  The first idea was to make somethink similar to facebook timeline,
+  The first idea was to make somethink similar to facebook timeline for mobile,
   but this demo is far from that.
 
   I didn't find the search functionality at the facebook mobile
