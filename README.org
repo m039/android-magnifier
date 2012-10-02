@@ -12,7 +12,7 @@
 
   But I try to explain what it does.
 
-* What it does
+* What it does?
 
   As it is hackathon I should use the facebook api, so that is why
   when you open this application you should login in your facebook
@@ -35,3 +35,14 @@
 
   - Facebook Android SDK
   - jackson library
+
+* What is good for?
+  I wanted to create the code from scratch that can be resuable.
+
+  So, if I wanted another application, which uses facebook messages 
+  I could just grab 2 first activities from this application.
+
+  And of course, the usage of the magnifier-widget is relatively easy.
+
+* License
+  android-magnifier is licensed under the terms of the GPL v2.0
